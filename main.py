@@ -5,9 +5,9 @@ openai.api_key =  os.getenv("OPENAI_API_KEY")
 
 def run():
 	while True:
-		msg = input("<MSG>")
+		msg = input("<MSG>: ")
 		response = getResponse(msg)
-		print("<IA>" + response)
+		print("<IA>: " + response)
 
 def getResponse(prompt):
 	response = openai.ChatCompletion.create(
@@ -15,13 +15,13 @@ def getResponse(prompt):
 	messages=[
 		{
 		"role": "system",
-		"content": "Eres un autocompletador de texto"
+		"content": "Eres una IA amistosa"
 		 },{
 		"role": "user",
 		"content": prompt
 			}
 		],
-		max_tokens=203
+		max_tokens=200
 	)
 	return response["choices"][0]["message"]["content"]
 
